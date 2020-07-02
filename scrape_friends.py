@@ -60,7 +60,7 @@ def print_list(list):
     for friend in list:
         print(friend)
 # URL you want to find friend list for.
-friend1 = list_of_friends("profile_url/friends")
+friend1 = list_of_friends("url")
 print(len(friend1))
 print_list(friend1)
 
