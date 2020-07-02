@@ -8,6 +8,7 @@ opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 urllib.request.install_opener(opener)
 authentication_url = "https://m.facebook.com/login.php"
 
+# Enter your credentials.
 payload={
     'email':"your_email",
     'pass':"your_pass"
@@ -20,7 +21,7 @@ contents = resp.read()
 #print(contents)
 
 def check(str):
-    lists = ["add friend", "confirm", "delete request", "cancel request"]
+    lists = ["add friend", "confirm", "delete request", "cancel request", "remove", "photos", "message", "timeline", "about", "likes", "more"]
     b = True
     if "public" in str:
         b=False
@@ -47,9 +48,9 @@ def list_of_friends(url):
                 break
             if i.text=="اردو" :
                 break
-            if p==0 and z>16 and check(i.text.lower()):
+            if p==0 and z>10 and check(i.text.lower()):
                 friends.append(i.text)
-            if p>0 and z>8 and check(i.text.lower()):
+            if p>0 and z>10 and check(i.text.lower()):
                 friends.append(i.text)
             z=z+1
         p=1
@@ -58,7 +59,7 @@ def list_of_friends(url):
 def print_list(list):
     for friend in list:
         print(friend)
-
+# URL you want to find friend list for.
 friend1 = list_of_friends("profile_url/friends")
 print(len(friend1))
 print_list(friend1)
